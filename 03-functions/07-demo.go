@@ -3,6 +3,9 @@ package main
 import "fmt"
 
 func main() {
+	add(100, 200)
+	subtract(100, 200)
+
 	logOper(10, 20, add)
 	logOper(10, 20, subtract)
 }
