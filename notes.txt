@@ -129,4 +129,6 @@ Assignment:2
 Assignment:3
     Refactor the solution for Assignment:2 using functions
 
-    
+Functions
+    1. A function can return more than one result
+    2. Variadic functions
