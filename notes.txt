@@ -102,3 +102,6 @@ Data Types
 
     byte (uint8) (alias for uint8)
     rune (int32) (alias for int32) (represents a unicode code point (character))
+
+Assignment:1
+    Write a program that will print the prime numbers between 3 to 100
