@@ -136,3 +136,19 @@ Functions
         1. Assign functions to variables
         2. Pass functions as arguments
         3. Return functions from functions
+
+Assignment:4
+    Create increment(), decrement() functions that behaves as follows:
+
+    increment() //=> 1
+    increment() //=> 2
+    increment() //=> 3
+    increment() //=> 4
+
+    decrement() //=> 3
+    decrement() //=> 2
+    decrement() //=> 1
+    decrement() //=> 0
+    decrement() //=> -1
+
+    IMPORTANT NOTE: the outcome of increment() and decrement() functions should NOT BE able to be influenced from outside
