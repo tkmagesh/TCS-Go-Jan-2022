@@ -132,3 +132,5 @@ Assignment:3
 Functions
     1. A function can return more than one result
     2. Variadic functions
+    3. Higher-order functions
+        1. Assign functions to variables
