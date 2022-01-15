@@ -23,3 +23,56 @@ About You
     Primary Skillset
     Experience in Go (if any)
 
+C
+C++
+Python
+Ruby
+Java
+C#
+Scala
+Golang
+
+- Better SDK
+- Better concurrency support
+- Memory management
+- Better Garbage Collection
+- Faster execution
+
+For me:
+    1. One of the simplest languages
+        ONLY 25 keywords
+        No support for classes (Only structs & functions)
+        No support for inheritance (Only composition)
+        NO access modifiers
+        No exceptions (Only errors)
+        No try catch block
+        No generics (till 1.17)
+
+    2. Shorter time for compilation
+
+    3. Fast execution
+        Compile to machine code
+        On par with 'C' language
+            Without the overheads
+                Garbage collector
+                No pointer arithmetic
+
+    4. Concurrency Support
+        Built in Scheduler
+        Each goroutines takes only (4 KB) when compared to OS threads (2 MB)
+        Concurrency support is built in the language itself
+            go, select, range, chan (data type), <- (chan operator)
+
+    
+
+Paradox of Choice
+    - Barry Schwartz
+
+var t = new System.Threading.Thread();
+t.Start()
+
+func fn(){
+
+}
+
+go fn()
