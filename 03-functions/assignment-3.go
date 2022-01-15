@@ -16,7 +16,6 @@ func main() {
 		no1, no2 = getOperands()
 		result = process(userChoice, no1, no2)
 		fmt.Printf("result = %d\n", result)
-
 	}
 }
 
