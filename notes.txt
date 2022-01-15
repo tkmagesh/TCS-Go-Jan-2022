@@ -105,3 +105,23 @@ Data Types
 
 Assignment:1
     Write a program that will print the prime numbers between 3 to 100
+
+Assignment:2
+    Write an interactive calculator
+    Menu
+        1. Add
+        2. Subtract
+        3. Multiply
+        4. Divide
+        5. Exit
+
+    If the userChoice is 1 to 4
+        Get the two numbers from the user
+        Perform the operation
+        Print the result
+        Display the menu again
+    If the userChoice is 5
+        Exit the program
+    If the userChoice is not 1 to 5
+        Display "Invalid choice"
+        Display the menu again
