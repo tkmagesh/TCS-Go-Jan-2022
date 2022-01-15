@@ -74,4 +74,44 @@ func main() {
 		result = x + y
 	)
 	fmt.Printf("%d + %d = %d\n", x, y, result)
+
+	/* Constants */
+	const pi = 3.141592653589793
+	fmt.Printf("pi = %f\n", pi)
+
+	/* iota */
+	/*
+		const (
+			red   = iota
+			green = iota
+			blue  = iota
+		)
+		fmt.Printf("red = %d, green = %d, blue = %d\n", red, green, blue)
+	*/
+	/*
+		const (
+			red = iota
+			green
+			blue
+		)
+		fmt.Printf("red = %d, green = %d, blue = %d\n", red, green, blue)
+	*/
+
+	/*
+		const (
+			red = iota + 5
+			green
+			blue
+		)
+		fmt.Printf("red = %d, green = %d, blue = %d\n", red, green, blue)
+	*/
+
+	const (
+		red = iota + 5
+		green
+		_
+		blue
+	)
+	fmt.Printf("red = %d, green = %d, blue = %d\n", red, green, blue)
+
 }
