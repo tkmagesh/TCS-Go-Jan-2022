@@ -134,3 +134,5 @@ Functions
     2. Variadic functions
     3. Higher-order functions
         1. Assign functions to variables
+        2. Pass functions as arguments
+        3. Return functions from functions
