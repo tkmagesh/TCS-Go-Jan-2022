@@ -1,0 +1,25 @@
+Magesh Kuppan
+
+Schedule:
+    Commence    : 9:30 AM
+    Tea Break   : 11:00 AM (20 mins)
+    Lunch Break : 1:00 PM (1 hr)
+    Tea Break   : 3:30 PM (20 mins)
+    Wind up     : 5:30 PM
+
+Methodology: 
+    No Powerpoint presentation
+    100% hands on driven
+    At least 50% of the participants are expected to complete their assignments before we move on
+    Be prepared to share you solution and explain your approach
+
+Software: 
+    golang.org 
+    Visual Studio Code 
+
+About You
+    Name
+    Total Experience
+    Primary Skillset
+    Experience in Go (if any)
+
