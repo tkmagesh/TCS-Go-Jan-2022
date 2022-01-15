@@ -125,3 +125,8 @@ Assignment:2
     If the userChoice is not 1 to 5
         Display "Invalid choice"
         Display the menu again
+
+Assignment:3
+    Refactor the solution for Assignment:2 using functions
+
+    
