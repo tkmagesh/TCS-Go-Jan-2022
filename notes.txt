@@ -164,3 +164,29 @@ Collections
 
 Assignment:5
     find which size word occurs the most and print the word size and the # of occurrances
+
+Modules & Packages
+
+Before 1.13
+    GOPATH
+        bin
+        pkg
+        src
+            github.com
+                tkmagesh
+                    go-app
+                        pkg1
+                        pkg2
+                            import "github.com/tkmagesh/go-app/pkg1"
+
+To create a mod file
+    go mod init modularity-demo
+
+to install a 3rd party package
+    go get github.com/fatih/color
+
+to keep the go.mod file in sync
+    go mod tidy
+
+to localize the dependencies
+    go mod vendor
