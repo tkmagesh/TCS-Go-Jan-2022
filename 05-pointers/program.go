@@ -20,14 +20,14 @@ func main() {
 	//assignment:6
 	var n1, n2 = 10, 20
 	fmt.Println("Before swapping n1 = ", n1, " n2 = ", n2)
-	swap( /*  */ )
-	fmt.Println("Before swapping n1 = ", n1, " n2 = ", n2)
+	swap(&n1, &n2)
+	fmt.Println("After swapping n1 = ", n1, " n2 = ", n2)
 }
 
 func increment(n *int) {
 	(*n)++
 }
 
-func swap( /*  */ ) {
-
+func swap(x, y *int) {
+	*x, *y = *y, *x
 }
