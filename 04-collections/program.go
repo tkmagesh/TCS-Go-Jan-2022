@@ -67,4 +67,34 @@ func main() {
 	dupProducts := products[:]
 	dupProducts[0] = "Dummy"
 	fmt.Println(products, dupProducts)
+
+	fmt.Println("Maps")
+	//var productRanks map[string]int
+	//productRanks := make(map[string]int)
+	productRanks := map[string]int{
+		"Laptop": 4,
+		"Mobile": 1,
+		"Tablet": 3,
+		"Camera": 2,
+	}
+	fmt.Println(productRanks)
+	fmt.Println("Rank of Laptop = ", productRanks["Laptop"])
+	productRanks["Pen"] = 10
+	fmt.Println(productRanks)
+
+	fmt.Println("Iterating a map")
+	for k, v := range productRanks {
+		fmt.Println(k, v)
+	}
+
+	fmt.Println("Check if a key exists")
+	if rank, exists := productRanks["Pencil"]; exists {
+		fmt.Println("Rank of Pencil = ", rank)
+	} else {
+		fmt.Println("Pencil does not exist")
+	}
+
+	fmt.Println("Deleting a key")
+	delete(productRanks, "Tablet")
+	fmt.Println(productRanks)
 }

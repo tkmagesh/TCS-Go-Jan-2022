@@ -152,3 +152,12 @@ Assignment:4
     decrement() //=> -1
 
     IMPORTANT NOTE: the outcome of increment() and decrement() functions should NOT BE able to be influenced from outside
+
+Collections
+    Array
+        Fixed size
+    Slice
+        Dynamic size
+        Pointer to an array
+    Map
+        key/value pairs collection
