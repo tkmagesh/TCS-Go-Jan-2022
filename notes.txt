@@ -190,3 +190,22 @@ to keep the go.mod file in sync
 
 to localize the dependencies
     go mod vendor
+
+Assignment:6
+Create an Employee type with following attributes
+    Id
+    Name
+    Basic
+    HRA
+    DA
+    Tax
+    CalculatorSalary()
+    Format() //=> returns the attribute values formatted in a single string for display
+
+Create an "FulltimeEmployee" Type
+    Composing the Employee type
+    Add a new attribute "Benefits"
+    When the "FulltimeEmployee" is formatted for display include "Benefits" as well
+    When salary is calculated, fulltime employee gets 20% bonus of an "Employee" (Salary of Employee + 20% more)
+
+Modularize the code
