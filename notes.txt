@@ -161,3 +161,6 @@ Collections
         Pointer to an array
     Map
         key/value pairs collection
+
+Assignment:5
+    find which size word occurs the most and print the word size and the # of occurrances
