@@ -26,6 +26,8 @@ func main() {
 	Print(p)
 
 	//apply 10% discount on p and print it
+	ApplyDiscount(&p, 0.1)
+	Print(p)
 }
 
 func Print(p Product) {
@@ -33,3 +35,6 @@ func Print(p Product) {
 }
 
 //write a function "ApplyDiscount" that will apply the given discount on the given product
+func ApplyDiscount(p *Product, discount float64) {
+	p.Cost = p.Cost * (1 - discount)
+}
