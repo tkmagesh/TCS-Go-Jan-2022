@@ -16,12 +16,7 @@ func main() {
 
 func genFibonacci(resultCh chan int) {
 	x, y := 0, 1
-	doneCh := make(chan string)
-	go func() {
-		time.Sleep(5 * time.Second)
-		doneCh <- "stop"
-	}()
-
+	doneCh := time.After(5 * time.Second)
 	for {
 		select {
 		case <-doneCh:

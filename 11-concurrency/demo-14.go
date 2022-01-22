@@ -8,20 +8,21 @@ import (
 
 func main() {
 	noCh := make(chan int)
-	go genFibonacci(noCh)
+	doneCh := make(chan string)
+	go genFibonacci(noCh, doneCh)
+	go func() {
+		fmt.Println("hit ENTER to exit")
+		var input string
+		fmt.Scanln(&input)
+		doneCh <- "stop"
+	}()
 	for no := range noCh {
 		fmt.Println(no)
 	}
 }
 
-func genFibonacci(resultCh chan int) {
+func genFibonacci(resultCh chan int, doneCh chan string) {
 	x, y := 0, 1
-	doneCh := make(chan string)
-	go func() {
-		time.Sleep(5 * time.Second)
-		doneCh <- "stop"
-	}()
-
 	for {
 		select {
 		case <-doneCh:
