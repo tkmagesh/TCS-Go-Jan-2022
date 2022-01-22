@@ -209,3 +209,8 @@ Create an "FulltimeEmployee" Type
     When salary is calculated, fulltime employee gets 20% bonus of an "Employee" (Salary of Employee + 20% more)
 
 Modularize the code
+
+Concurrency
+    Assumption to be STRICTLY avoided
+        1. Never assume the time taken for a function to complete
+        2. Never assume the (default) sequence of execution of the concurrent operations (goroutines)
