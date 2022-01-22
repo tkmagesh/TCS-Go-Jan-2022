@@ -226,3 +226,7 @@ Concurrency
 
         3. Reading data (receiving) from the channel
             val := <- ch
+
+        4. A channel read operation is always a blocking operation
+
+        5. A channel write operation can succeed ONLY if a read operation is already initiated (not always). If the read is not initiated then the write operation will be blocked
