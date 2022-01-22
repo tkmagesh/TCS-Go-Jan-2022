@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Product struct {
 	Id       int
 	Name     string
@@ -8,8 +10,67 @@ type Product struct {
 	Category string
 }
 
+func (p Product) ToString() string {
+	return fmt.Sprintf("Id = %d, Name = %s, Cost = %f, Units = %d, Category = %s", p.Id, p.Name, p.Cost, p.Units, p.Category)
+}
+
+type Products []Product
+
+func (products Products) ToString() string {
+	result := ""
+	for _, p := range products {
+		result += fmt.Sprintf("%s\n", p.ToString())
+	}
+	return result
+}
+
+func (products Products) IndexOf(p Product) int {
+	for idx, product := range products {
+		if product == p {
+			return idx
+		}
+	}
+	return -1
+}
+
+func (products Products) Includes(p Product) bool {
+	return products.IndexOf(p) >= 0
+}
+
+/*
+func (products Products) FilterCostlyProducts() Products {
+	result := Products{}
+	for _, product := range products {
+		if product.Cost > 1000 {
+			result = append(result, product)
+		}
+	}
+	return result
+}
+
+func (products Products) FilterStationaryProducts() Products {
+	result := Products{}
+	for _, product := range products {
+		if product.Category == "Stationary" {
+			result = append(result, product)
+		}
+	}
+	return result
+}
+*/
+
+func (products Products) Filter(predicate func(Product) bool) Products {
+	result := Products{}
+	for _, product := range products {
+		if predicate(product) {
+			result = append(result, product)
+		}
+	}
+	return result
+}
+
 func main() {
-	products := []Product{
+	products := Products{
 		Product{105, "Pen", 5, 50, "Stationary"},
 		Product{107, "Pencil", 2, 100, "Stationary"},
 		Product{103, "Marker", 50, 20, "Utencil"},
@@ -17,6 +78,50 @@ func main() {
 		Product{101, "Kettle", 2500, 10, "Utencil"},
 		Product{104, "Scribble Pad", 20, 20, "Stationary"},
 	}
+
+	marker := Product{103, "Marker", 50, 20, "Utencil"}
+	dummy := Product{5000, "Dummy", 50, 20, "Dummy"}
+
+	//IndexOf
+	fmt.Println("Index of Marker = ", products.IndexOf(marker))
+	fmt.Println("Index of Dummy = ", products.IndexOf(dummy))
+
+	//Includes
+	fmt.Println("Is Marker included ? = ", products.Includes(marker))
+	fmt.Println("Is Dummy  included ? = ", products.Includes(dummy))
+
+	/*
+		//Filter Costly Products
+		fmt.Println()
+		costlyProducts := products.FilterCostlyProducts()
+		fmt.Println("Costly Products")
+		fmt.Println(costlyProducts.ToString())
+
+		//Filter Stationary Products
+		fmt.Println()
+		stationaryProducts := products.FilterStationaryProducts()
+		fmt.Println("Stationary Products")
+		fmt.Println(stationaryProducts.ToString())
+	*/
+
+	//Filter Costly Products
+	fmt.Println()
+	costlyProductCriteria := func(p Product) bool {
+		return p.Cost > 1000
+	}
+	costlyProducts := products.Filter(costlyProductCriteria)
+	fmt.Println("Costly Products")
+	fmt.Println(costlyProducts.ToString())
+
+	//Filter Stationary Products
+	fmt.Println()
+	stationaryProductCriteria := func(p Product) bool {
+		return p.Category == "Stationary"
+	}
+	stationaryProducts := products.Filter(stationaryProductCriteria)
+	fmt.Println("Stationary Products")
+	fmt.Println(stationaryProducts.ToString())
+
 }
 
 /*
