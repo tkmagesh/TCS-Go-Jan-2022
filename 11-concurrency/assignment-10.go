@@ -1,16 +1,35 @@
 /* Modify the program so that the add function can be executed as a goroutine */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
+
+//Don't Commnucate by sharing memory. Instead share memory by communicating
+
+var result int
+var wg sync.WaitGroup
+var mutex sync.Mutex
 
 func main() {
-	result := go add(100, 200)
-	fmt.Println("Result = ", result)
+	wg.Add(1)
+	go add(100, 200)
+	wg.Wait()
+	mutex.Lock()
+	{
+		fmt.Println("Result = ", result)
+	}
+	mutex.Unlock()
 }
 
-func add(x, y int) int {
+func add(x, y int) {
 	fmt.Printf("processing %d and %d\n", x, y)
-	result := x + y
-	fmt.Printf("returing result : ", result)
-	return result
+	mutex.Lock()
+	{
+		result = x + y
+	}
+	mutex.Unlock()
+	fmt.Println("returing result : ", result)
+	wg.Done()
 }

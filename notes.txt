@@ -214,3 +214,15 @@ Concurrency
     Assumption to be STRICTLY avoided
         1. Never assume the time taken for a function to complete
         2. Never assume the (default) sequence of execution of the concurrent operations (goroutines)
+
+    Channel
+        1. creating a channel
+            var ch chan int = make(chan int)
+            OR
+            ch := make(chan int)
+
+        2. Writing data (sending) into the channel
+            ch <- 10
+
+        3. Reading data (receiving) from the channel
+            val := <- ch
