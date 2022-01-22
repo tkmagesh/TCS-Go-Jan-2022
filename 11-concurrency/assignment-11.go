@@ -23,7 +23,7 @@ import (
 		The loop should remain in the print function
 */
 func main() {
-	x := make(chan bool)
+	x := make(chan bool, 1)
 	y := make(chan bool)
 	wg := &sync.WaitGroup{}
 	wg.Add(2)
