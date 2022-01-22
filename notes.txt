@@ -230,3 +230,24 @@ Concurrency
         4. A channel read operation is always a blocking operation
 
         5. A channel write operation can succeed ONLY if a read operation is already initiated (not always). If the read is not initiated then the write operation will be blocked
+
+IO
+    io package
+        reader
+        writer
+        closer
+        seeker
+
+    io/ioutil package
+        read file contents
+        write file contents
+
+    bufio package
+        buffered read write operations
+        read file contents until a delimeter is encountered
+        read line by line
+
+    os package
+        create a file
+        copying a file
+        deleting a file
