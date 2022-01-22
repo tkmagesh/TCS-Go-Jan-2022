@@ -69,6 +69,24 @@ func (products Products) Filter(predicate func(Product) bool) Products {
 	return result
 }
 
+func (products Products) Any(predicate func(Product) bool) bool {
+	for _, product := range products {
+		if predicate(product) {
+			return true
+		}
+	}
+	return false
+}
+
+func (products Products) All(predicate func(Product) bool) bool {
+	for _, product := range products {
+		if !predicate(product) {
+			return false
+		}
+	}
+	return true
+}
+
 func main() {
 	products := Products{
 		Product{105, "Pen", 5, 50, "Stationary"},
@@ -114,6 +132,7 @@ func main() {
 	fmt.Println(costlyProducts.ToString())
 
 	//Filter Stationary Products
+	fmt.Println("Filter")
 	fmt.Println()
 	stationaryProductCriteria := func(p Product) bool {
 		return p.Category == "Stationary"
@@ -121,6 +140,14 @@ func main() {
 	stationaryProducts := products.Filter(stationaryProductCriteria)
 	fmt.Println("Stationary Products")
 	fmt.Println(stationaryProducts.ToString())
+
+	fmt.Println("Any")
+	fmt.Println("Are there any costly products ? : ", products.Any(costlyProductCriteria))
+	fmt.Println("Are there any stationary products ? : ", products.Any(stationaryProductCriteria))
+
+	fmt.Println("All")
+	fmt.Println("Are all costly products ? : ", products.All(costlyProductCriteria))
+	fmt.Println("Are all stationary products ? : ", products.All(stationaryProductCriteria))
 
 }
 
