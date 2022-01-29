@@ -310,3 +310,9 @@ tools for grpc
 
 to generate the proxy and the stub run the following command in the application folder
     protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/service.proto 
+
+
+Code Coverage
+    go test ./... --cover
+    go test ./... -coverprofile=coverage.out
+    go tool cover -html=coverage.out

@@ -90,7 +90,10 @@ func doBidirectionalStreaming(ctx context.Context, client proto.AppServiceClient
 	go func() {
 		for {
 			res, err := stream.Recv()
-
+			if err == io.EOF {
+				done <- struct{}{}
+				break
+			}
 			if err != nil {
 				log.Fatalln(err)
 			}
@@ -98,7 +101,6 @@ func doBidirectionalStreaming(ctx context.Context, client proto.AppServiceClient
 			primeNo := res.GetPrimeNumber()
 			fmt.Println("Prime Number received: ", primeNo)
 		}
-		done <- struct{}{}
 	}()
 
 	req1 := &proto.PrimeRequest{
