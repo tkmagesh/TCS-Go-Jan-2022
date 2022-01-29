@@ -259,3 +259,51 @@ Web
         encoding/json
 
     Routing libraries
+
+GRPC
+
+    .NET Remoting
+        TCP / UDP
+        binary serialization
+        real time updates
+    Java RMI
+
+    REST services
+        http
+            stateless
+            ONLY request & response
+            data in text
+
+    GRPC
+        http2
+        protocol bufferes (serialization standard)
+        supported communication patterns
+            request & response
+            client streaming (multiple requests & one response)
+            server streaming (one request & multiple responses)
+            bidirectional streaming
+
+    
+P101,Pen,5,10,Stationary
+P102,Pencil,2,100,Stationary
+
+data = 53
+xml = 245 (5 X data)
+json = 165 (3 X data)
+
+Steps for creating a service
+    1. Create the proto (protocol bufferes) file with the service contract, operation contract & message contract
+    2. Generate proxy & stub (using the protoc command)
+    3. Build the servers using the stub & client using the proxy
+
+tools for grpc
+    Mac
+        brew install protobuf
+        brew install protoc-gen-go
+        brew install protoc-gen-go-grpc
+
+    window
+        go install google.golang.org/protobuf/cmd/protoc-gen-go
+        go install google.golang.org/protobuf/cmd/protoc-gen-go-grpc
+
+    protoc -v
