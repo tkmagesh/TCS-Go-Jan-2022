@@ -21,7 +21,8 @@ func main() {
 
 	//doRequestResponse(ctx, client)
 	//doServerStreaming(ctx, client)
-	doClientStreaming(ctx, client)
+	//doClientStreaming(ctx, client)
+	doBidirectionalStreaming(ctx, client)
 }
 
 func doRequestResponse(ctx context.Context, client proto.AppServiceClient) {
@@ -78,4 +79,52 @@ func doClientStreaming(ctx context.Context, client proto.AppServiceClient) {
 		log.Fatalln(err)
 	}
 	fmt.Println("Average Received : ", res.GetAverage())
+}
+
+func doBidirectionalStreaming(ctx context.Context, client proto.AppServiceClient) {
+	stream, err := client.GenerateMultiPrimes(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	done := make(chan struct{})
+	go func() {
+		for {
+			res, err := stream.Recv()
+
+			if err != nil {
+				log.Fatalln(err)
+			}
+
+			primeNo := res.GetPrimeNumber()
+			fmt.Println("Prime Number received: ", primeNo)
+		}
+		done <- struct{}{}
+	}()
+
+	req1 := &proto.PrimeRequest{
+		Start: 3,
+		End:   30,
+	}
+	fmt.Println("Sending request - 1")
+	stream.Send(req1)
+
+	time.Sleep(2 * time.Second)
+
+	req2 := &proto.PrimeRequest{
+		Start: 31,
+		End:   60,
+	}
+	fmt.Println("Sending request - 2")
+	stream.Send(req2)
+
+	time.Sleep(2 * time.Second)
+
+	req3 := &proto.PrimeRequest{
+		Start: 61,
+		End:   100,
+	}
+	fmt.Println("Sending request - 3")
+	stream.Send(req3)
+
+	<-done
 }

@@ -48,6 +48,9 @@ service AppService{
     /* client streaming */
     rpc CalculateAverage(stream AverageRequest) returns (AverageResponse);
 
+    /* Bidirectional streaming */
+    rpc GenerateMultiPrimes(stream PrimeRequest) returns (stream PrimeResponse);
+
 }
 
 

@@ -83,6 +83,26 @@ func (s *server) CalculateAverage(stream proto.AppService_CalculateAverageServer
 	return nil
 }
 
+func (s *server) GenerateMultiPrimes(stream proto.AppService_GenerateMultiPrimesServer) error {
+	for {
+		req, err := stream.Recv()
+		if err != nil {
+			log.Fatalln(err)
+		}
+		start := req.GetStart()
+		end := req.GetEnd()
+		for no := start; no < end; no++ {
+			if isPrime(no) {
+				time.Sleep(500 * time.Millisecond)
+				res := &proto.PrimeResponse{
+					PrimeNumber: no,
+				}
+				fmt.Println("Sending prime no : ", no)
+				stream.Send(res)
+			}
+		}
+	}
+}
 func main() {
 	listener, err := net.Listen("tcp", ":50051")
 	if err != nil {
