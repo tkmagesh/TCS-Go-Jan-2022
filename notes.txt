@@ -306,4 +306,7 @@ tools for grpc
         go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
-    protoc -v
+    protoc --version
+
+to generate the proxy and the stub run the following command in the application folder
+    protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/service.proto 
