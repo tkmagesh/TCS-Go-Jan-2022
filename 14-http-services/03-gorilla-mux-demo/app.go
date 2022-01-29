@@ -46,6 +46,7 @@ func (a *App) Run(addr string) {
 }
 
 func (a *App) getProduct(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Request received : ", r.URL.Path)
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
 	if err != nil {
@@ -65,6 +66,7 @@ func (a *App) getProduct(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respondWithJSON(w, http.StatusOK, p)
+	fmt.Println("Response Served : ", r.URL.Path)
 }
 
 func respondWithError(w http.ResponseWriter, code int, message string) {
@@ -80,6 +82,7 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 }
 
 func (a *App) getProducts(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Request received : ", r.URL.Path)
 	count, _ := strconv.Atoi(r.FormValue("count"))
 	start, _ := strconv.Atoi(r.FormValue("start"))
 
@@ -97,6 +100,7 @@ func (a *App) getProducts(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respondWithJSON(w, http.StatusOK, products)
+	fmt.Println("Response served : ", r.URL.Path)
 }
 
 func (a *App) createProduct(w http.ResponseWriter, r *http.Request) {
